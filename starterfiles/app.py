@@ -5,11 +5,14 @@ from flask import Flask, session, render_template, request, g
 app = Flask(__name__)
 app.secret_key = "fsdkjsbfa szfkhkefh"
 
-@app.route("/add_items", method=["post"])
-def add_items():
-    return request.form["select_items"]
+@app.route("/")
+def index():
     data = get_db()
     return render_template("index.html", all_data= data)
+
+@app.route("/add_items", methods=["post"])
+def add_items():
+    return request.form["select_items"]
 
 def get_db():
     db = getattr(g, '_database', None)
