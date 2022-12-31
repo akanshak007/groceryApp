@@ -9,9 +9,9 @@ app.config["SESSION_COOKIE_NAME"] = "mycookie"
 @app.route("/", methods=["POST", "GET"])
 def index():
     session["all_items"], session["shopping_items"] = get_db()
-    return render_template("index.html", all_items=session ["all_items"], shopping_items=session["shopping_items"])
+    return render_template("index.html", all_items=session["all_items"], shopping_items=session["shopping_items"])
 
-@app.route("/add_items", methods=["post"])
+@app.route("/add_items", method=["POST"])
 def add_items():
     session["shopping_items"].append(request.form["select_items"])
     return render_template("index.html)", all_items=session["all_items"], shopping_items=session["shopping_items"])
